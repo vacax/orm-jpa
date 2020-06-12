@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'edu.pucmm.eict'
+version '1.0-SNAPSHOT'
+
+mainClassName='edu.pucmm.eict.ormjpa.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    //dependencia de Javalin
+    compile 'io.javalin:javalin:3.8.0'
+    //manejo de log.
+    compile "org.slf4j:slf4j-simple:1.7.28"
+    //Procesamiento JSON para Javalin.
+    compile "com.fasterxml.jackson.core:jackson-databind:2.10.1"
+    //ORM - Hibernate.
+    compile 'org.hibernate:hibernate-core:5.4.17.Final'
+    compile 'org.hibernate:hibernate-entitymanager:5.4.17.Final'
+    //Driver de la conexión en h2...
+    compile 'com.h2database:h2:1.4.197'
+}
