@@ -24,12 +24,12 @@ public class BootStrapServices {
 
     public void startDb() {
         try {
-            //
+            //Modo servidor H2.
             Server.createTcpServer("-tcpPort",
                     "9092",
                     "-tcpAllowOthers",
                     "-tcpDaemon").start();
-            //Abriendo el cliente web.
+            //Abriendo el cliente web. El valor 0 representa puerto aleatorio.
             String status = Server.createWebServer("-trace", "-webPort", "0").start().getStatus();
             //
             System.out.println("Status Web: "+status);

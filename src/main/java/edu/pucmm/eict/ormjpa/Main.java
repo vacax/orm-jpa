@@ -12,7 +12,7 @@ import io.javalin.core.util.RouteOverviewPlugin;
 public class Main {
 
     public static void main(String[] args) {
-        String mensaje = "Software ORM - JAP";
+        String mensaje = "Software ORM - JPA";
         System.out.println(mensaje);
 
         //Iniciando la base de datos.
