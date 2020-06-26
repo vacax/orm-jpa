@@ -53,6 +53,7 @@ public class Estudiante implements Serializable {
     @PreUpdate
     @PrePersist
     private void cancelarMatricula(){
+        //setNombre(getNombre().toUpperCase()); //cambiando a mayuscula
         if(getMatricula() == 20011137){
               throw new RuntimeException("No puede ser esa matricula..");
         }

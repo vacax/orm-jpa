@@ -28,7 +28,8 @@ public class BootStrapServices {
             Server.createTcpServer("-tcpPort",
                     "9092",
                     "-tcpAllowOthers",
-                    "-tcpDaemon").start();
+                    "-tcpDaemon",
+                    "-ifNotExists").start();
             //Abriendo el cliente web. El valor 0 representa puerto aleatorio.
             String status = Server.createWebServer("-trace", "-webPort", "0").start().getStatus();
             //
