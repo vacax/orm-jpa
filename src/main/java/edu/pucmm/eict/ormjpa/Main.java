@@ -1,6 +1,7 @@
 package edu.pucmm.eict.ormjpa;
 
 import edu.pucmm.eict.ormjpa.controladores.ApiControlador;
+import edu.pucmm.eict.ormjpa.controladores.FotoControlador;
 import edu.pucmm.eict.ormjpa.entidades.Estudiante;
 import edu.pucmm.eict.ormjpa.entidades.Profesor;
 import edu.pucmm.eict.ormjpa.servicios.BootStrapServices;
@@ -38,6 +39,7 @@ public class Main {
 
         //creando los endpoint de las rutas.
         new ApiControlador(app).aplicarRutas();
+        new FotoControlador(app).aplicarRutas();
     }
 
     /**

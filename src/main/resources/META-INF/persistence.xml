@@ -8,6 +8,7 @@
         <class>edu.pucmm.eict.ormjpa.entidades.Estudiante</class>
         <class>edu.pucmm.eict.ormjpa.entidades.Profesor</class>
         <class>edu.pucmm.eict.ormjpa.entidades.GrupoClase</class>
+        <class>edu.pucmm.eict.ormjpa.entidades.Foto</class>
         <properties>
             <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />-->
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/ormjpa" />
