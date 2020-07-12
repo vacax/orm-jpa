@@ -12,9 +12,16 @@ import io.javalin.core.util.RouteOverviewPlugin;
 
 public class Main {
 
+    //indica el modo de operacion para la base de datos.
+    private static String modoConexion = "";
+
     public static void main(String[] args) {
         String mensaje = "Software ORM - JPA";
         System.out.println(mensaje);
+        if(args.length >= 1){
+            modoConexion = args[0];
+            System.out.println("Modo de Operacion: "+modoConexion);
+        }
 
         //Iniciando la base de datos.
         BootStrapServices.getInstancia().init();
@@ -52,5 +59,13 @@ public class Main {
             return Integer.parseInt(processBuilder.environment().get("PORT"));
         }
         return 7000; //Retorna el puerto por defecto en caso de no estar en Heroku.
+    }
+
+    /**
+     * Nos
+     * @return
+     */
+    public static String getModoConexion(){
+        return modoConexion;
     }
 }

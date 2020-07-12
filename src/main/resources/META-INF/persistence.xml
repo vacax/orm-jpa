@@ -25,18 +25,15 @@
         </properties>
     </persistence-unit>
     <!--Puedo tener varias unidades de persistencia en función a la conexión que necesito-->
-    <persistence-unit name="MiUnidadPersistencia-Prueba" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="Heroku" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>edu.pucmm.eict.ormjpa.entidades.Estudiante</class>
         <class>edu.pucmm.eict.ormjpa.entidades.Profesor</class>
         <class>edu.pucmm.eict.ormjpa.entidades.GrupoClase</class>
+        <class>edu.pucmm.eict.ormjpa.entidades.Foto</class>
         <properties>
-            <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />-->
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/ormjapa" />
-            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-            <property name="javax.persistence.jdbc.user" value="sa" />
-            <property name="javax.persistence.jdbc.password" value="" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
             <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
             <property name="hibernate.show_sql" value="true"/>
             <!-- Indica como será la generación de las tablas en el motor-->

@@ -26,6 +26,22 @@ dependencies {
     compile 'org.hibernate:hibernate-entitymanager:5.4.17.Final'
     //Driver de la conexión en h2...
     compile 'com.h2database:h2:1.4.200'
+    compile 'org.postgresql:postgresql:42.2.1'
     //sistemas de plantilla:
     compile 'org.thymeleaf:thymeleaf:3.0.5.RELEASE'
+}
+
+shadowJar{
+    baseName = 'app'
+    classifier = ''
+    archiveVersion = ''
+}
+
+/**
+ * tarea necesaria para heroku si optamos por la tarea de Shadowjar
+ * en el archivo Procfile debe estar el siguiente comando:
+ * web: java -jar build/libs/app.jar
+ */
+task stage {
+    dependsOn shadowJar
 }
