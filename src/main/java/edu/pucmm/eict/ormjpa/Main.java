@@ -24,7 +24,9 @@ public class Main {
         }
 
         //Iniciando la base de datos.
-        BootStrapServices.getInstancia().init();
+        if(modoConexion.isEmpty()) {
+            BootStrapServices.getInstancia().init();
+        }
 
         //creando los objetos por defecto.
         for(int i=0;i<50;i++){

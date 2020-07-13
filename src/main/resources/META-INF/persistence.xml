@@ -32,6 +32,7 @@
         <class>edu.pucmm.eict.ormjpa.entidades.GrupoClase</class>
         <class>edu.pucmm.eict.ormjpa.entidades.Foto</class>
         <properties>
+            <property name="hibernate.archive.autodetection" value="class"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
             <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
