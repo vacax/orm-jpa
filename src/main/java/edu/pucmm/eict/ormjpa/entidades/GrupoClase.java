@@ -16,7 +16,7 @@ public class GrupoClase implements Serializable {
     private String clave;
     private String nombre;
 
-    @ManyToOne
+    @ManyToOne()
     private Profesor profesor; //Relación mucho a uno con el profesor, un profesor puede tener muchas clases, pero una clase un profesor.
 
     @ManyToMany() //

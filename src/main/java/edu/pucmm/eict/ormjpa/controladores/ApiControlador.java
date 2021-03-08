@@ -36,11 +36,12 @@ public class ApiControlador {
 
 
                   get("/", ctx -> {
-                        ctx.json(estudianteServices.findAll());
+                        ctx.json(estudianteServices.findAll()); //TODO: implementar paginación.
                   });
 
                   get("/:matricula", ctx -> {
                       Estudiante es = estudianteServices.find(ctx.pathParam("matricula", Integer.class).get());
+
                       if(es!=null){
                           ctx.json(es);
                       }else{

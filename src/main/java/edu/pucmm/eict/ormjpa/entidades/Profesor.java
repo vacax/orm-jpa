@@ -8,7 +8,7 @@ import java.util.Set;
  * Created by vacax on 03/06/16.
  */
 @Entity
-@NamedQueries({@NamedQuery(name = "Profesor.findAllByNombre", query = "select p from Profesor  p where p.nombre like :nombre")})
+@NamedQueries({@NamedQuery(name = "Profesor.findAllByNombre", query = "select p from Profesor p where p.nombre like :nombre")})
 public class Profesor implements Serializable {
 
     @Id
