@@ -1,6 +1,7 @@
 package edu.pucmm.eict.ormjpa.servicios;
 
 import edu.pucmm.eict.ormjpa.entidades.Estudiante;
+import edu.pucmm.eict.ormjpa.entidades.Profesor;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -45,6 +46,33 @@ public class EstudianteServices extends GestionDb<Estudiante> {
         //query.setParameter("nombre", apellido+"%");
         List<Estudiante> lista = query.getResultList();
         return lista;
+    }
+
+    public void pruebaActualizacion(){
+        EntityManager em = getEntityManager();
+        Estudiante est = new Estudiante(2222, "Nombre");
+        em.getTransaction().begin();
+        em.persist(est); //creando el registro.
+        em.flush();
+        em.getTransaction().commit(); //persistiendo el registro.
+        em.getTransaction().begin();
+        est.setNombre("Otro Nombre");
+        em.flush();
+        em.getTransaction().commit();
+        em.getTransaction().begin();
+        est.setNombre("Nuevamente otro nombre...");
+        em.flush();
+        em.getTransaction().commit();
+        em.close(); //todos los objetos abiertos y manejados fueron cerrados.
+        //
+        est.setNombre("Cambiando el objeto..."); //en memoria, no en la base datos.
+        em = getEntityManager();
+        em.getTransaction().begin();
+        em.merge(est);
+        em.getTransaction().commit();
+        Profesor p = em.find(Profesor.class, 1);
+        System.out.println("El nombre del profesor: "+p.getNombre());
+        em.close();
     }
 
 

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -13,6 +14,11 @@ public class Cliente implements Serializable {
     private
     Long id;
     private String nombre;
+    @OneToMany(mappedBy = "cliente")
+    private Set<Factura> listaFactura;
+    @OneToMany
+    private Set<Direccion> listaDirecciones;
+
 
     public Set<Factura> getListaFactura() {
         return listaFactura;
@@ -21,9 +27,6 @@ public class Cliente implements Serializable {
     public void setListaFactura(Set<Factura> listaFactura) {
         this.listaFactura = listaFactura;
     }
-
-    @OneToMany(mappedBy = "cliente")
-    private Set<Factura> listaFactura;
 
 
     public Long getId() {
@@ -40,5 +43,18 @@ public class Cliente implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return id.equals(cliente.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

@@ -46,6 +46,11 @@ public class Main {
             ctx.result(mensaje);
         });
 
+        app.get("/prueba", ctx -> {
+            EstudianteServices.getInstancia().pruebaActualizacion();
+            ctx.result("Bien!...");
+        });
+
         //creando los endpoint de las rutas.
         new ApiControlador(app).aplicarRutas();
         new FotoControlador(app).aplicarRutas();
