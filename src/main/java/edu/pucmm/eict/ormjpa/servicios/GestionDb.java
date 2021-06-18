@@ -55,7 +55,7 @@ public class GestionDb<T> {
         String port = st.nextToken();
         String databaseName = st.nextToken();
         //creando la jbdc String
-        String jdbcUrl = String.format("jdbc:postgresql://%s:%s/%s", host, port, databaseName);
+        String jdbcUrl = String.format("jdbc:postgresql://%s:%s/%s?sslmode=require", host, port, databaseName);
         //pasando las propiedades.
         Map<String, String> properties = new HashMap<>();
         properties.put("javax.persistence.jdbc.url", jdbcUrl );
