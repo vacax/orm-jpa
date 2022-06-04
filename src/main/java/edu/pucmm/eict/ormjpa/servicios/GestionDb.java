@@ -1,10 +1,9 @@
 package edu.pucmm.eict.ormjpa.servicios;
 
 import edu.pucmm.eict.ormjpa.Main;
-import net.bytebuddy.implementation.bytecode.Throw;
+import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaQuery;
 
-import javax.persistence.*;
-import javax.persistence.criteria.CriteriaQuery;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;

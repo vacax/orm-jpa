@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group 'edu.pucmm.eict'
@@ -14,21 +14,28 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
     //dependencia de Javalin
-    compile 'io.javalin:javalin:3.8.0'
+    implementation 'io.javalin:javalin:4.6.0'
+
     //manejo de log.
-    compile "org.slf4j:slf4j-simple:1.7.28"
+    implementation "org.slf4j:slf4j-simple:1.7.36"
+
     //Procesamiento JSON para Javalin.
-    compile "com.fasterxml.jackson.core:jackson-databind:2.10.1"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+
     //ORM - Hibernate.
-    compile 'org.hibernate:hibernate-core:5.4.17.Final'
-    compile 'org.hibernate:hibernate-entitymanager:5.4.17.Final'
+    implementation 'org.hibernate.orm:hibernate-core:6.0.2.Final'
+    //implementation 'org.hibernate:hibernate-entitymanager:6.0.0.Alpha7'
+
     //Driver de la conexión en h2...
-    compile 'com.h2database:h2:1.4.200'
-    compile 'org.postgresql:postgresql:42.2.1'
+    implementation 'com.h2database:h2:2.1.212'
+    implementation 'org.postgresql:postgresql:42.3.6'
+
     //sistemas de plantilla:
-    compile 'org.thymeleaf:thymeleaf:3.0.5.RELEASE'
+    implementation 'org.thymeleaf:thymeleaf:3.0.15.RELEASE'
 }
 
 shadowJar{

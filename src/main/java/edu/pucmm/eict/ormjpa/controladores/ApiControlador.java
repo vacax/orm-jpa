@@ -39,8 +39,8 @@ public class ApiControlador {
                         ctx.json(estudianteServices.findAll()); //TODO: implementar paginación.
                   });
 
-                  get("/:matricula", ctx -> {
-                      Estudiante es = estudianteServices.find(ctx.pathParam("matricula", Integer.class).get());
+                  get("/{matricula}", ctx -> {
+                      Estudiante es = estudianteServices.find(ctx.pathParamAsClass("matricula", Integer.class).get());
 
                       if(es!=null){
                           ctx.json(es);
@@ -63,9 +63,9 @@ public class ApiControlador {
                       ctx.json(estudianteServices.editar(tmp));
                   });
 
-                  delete("/:matricula", ctx -> {
+                  delete("/{matricula}", ctx -> {
                       //creando.
-                      ctx.json(estudianteServices.eliminar(ctx.pathParam("matricula", Integer.class).get()));
+                      ctx.json(estudianteServices.eliminar(ctx.pathParamAsClass("matricula", Integer.class).get()));
                   });
               });
 
@@ -76,8 +76,8 @@ public class ApiControlador {
                       ctx.json(profesorServices.findAll());
                   });
 
-                  get("/:id", ctx -> {
-                      Profesor p = profesorServices.find(ctx.pathParam("id", Integer.class).get());
+                  get("/{id}", ctx -> {
+                      Profesor p = profesorServices.find(ctx.pathParamAsClass("id", Integer.class).get());
                       if(p!=null){
                           ctx.json(p);
                       }else{
@@ -99,9 +99,9 @@ public class ApiControlador {
                       ctx.json(profesorServices.editar(tmp));
                   });
 
-                  delete("/:id", ctx -> {
+                  delete("/{id}", ctx -> {
                       //creando.
-                      ctx.json(profesorServices.eliminar(ctx.pathParam("id", Integer.class).get()));
+                      ctx.json(profesorServices.eliminar(ctx.pathParamAsClass("id", Integer.class).get()));
                   });
               });
           });

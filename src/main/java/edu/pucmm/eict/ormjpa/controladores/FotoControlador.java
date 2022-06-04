@@ -57,9 +57,9 @@ public class FotoControlador {
                     });
                 });
 
-                get("/visualizar/:id", ctx -> {
+                get("/visualizar/{id}", ctx -> {
                     try {
-                        Foto foto = fotoServices.find(ctx.pathParam("id", Long.class).getOrNull());
+                        Foto foto = fotoServices.find(ctx.pathParamAsClass("id", Long.class).get());
                         if(foto==null){
                             ctx.redirect("/fotos/listar");
                             return;
@@ -74,9 +74,9 @@ public class FotoControlador {
                     }
                 });
 
-                get("/eliminar/:id", ctx -> {
+                get("/eliminar/{id}", ctx -> {
                     try {
-                        Foto foto = fotoServices.find(ctx.pathParam("id", Long.class).getOrNull());
+                        Foto foto = fotoServices.find(ctx.pathParamAsClass("id", Long.class).get());
                         if(foto!=null){
                             fotoServices.eliminar(foto.getId());
                         }

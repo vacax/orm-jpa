@@ -1,6 +1,6 @@
 package edu.pucmm.eict.ormjpa.entidades;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 /**
