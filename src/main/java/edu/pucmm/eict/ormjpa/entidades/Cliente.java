@@ -1,8 +1,10 @@
 package edu.pucmm.eict.ormjpa.entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
+import jakarta.persistence.Entity;
+
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;

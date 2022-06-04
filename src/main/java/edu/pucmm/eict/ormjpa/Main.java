@@ -9,6 +9,7 @@ import edu.pucmm.eict.ormjpa.servicios.EstudianteServices;
 import edu.pucmm.eict.ormjpa.servicios.ProfesorServices;
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
+import io.javalin.http.staticfiles.Location;
 
 public class Main {
 
@@ -36,7 +37,11 @@ public class Main {
 
         //Creando la instancia del servidor.
         Javalin app = Javalin.create(config ->{
-            config.addStaticFiles("/publico"); //desde la carpeta de resources
+            config.addStaticFiles(staticFileConfig -> {
+                staticFileConfig.hostedPath = "/";
+                staticFileConfig.directory = "/publico";
+                staticFileConfig.location = Location.CLASSPATH;
+            }); //desde la carpeta de resources
             config.registerPlugin(new RouteOverviewPlugin("/rutas")); //aplicando plugins de las rutas
             config.enableCorsForAllOrigins();
         }).start(getHerokuAssignedPort());

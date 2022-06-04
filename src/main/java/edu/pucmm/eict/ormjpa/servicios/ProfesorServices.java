@@ -1,9 +1,10 @@
 package edu.pucmm.eict.ormjpa.servicios;
 
 import edu.pucmm.eict.ormjpa.entidades.Profesor;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+
 import java.util.List;
 
 /**
