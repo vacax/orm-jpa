@@ -1,0 +1,13 @@
+#Compilación todo en la misma imagen, notar el tamaño de la misma.
+#Utilizando la versión de JDK ALPINE
+FROM eclipse-temurin:17-jdk-alpine
+#Creando una nueva carpeta y moviendo el directorio del trabajo.
+WORKDIR /app
+#Copiando toda la información del HOST al contenedor.
+COPY . .
+# Realizando la compilación
+RUN ["./gradlew", "shadowjar", "--no-daemon"]
+# Indicando el puerto que utiliza la aplicación (Informativo)
+EXPOSE 7000
+# Punto de entrada de nuestra aplicación.
+ENTRYPOINT ["java", "-jar", "build/libs/app.jar"]
