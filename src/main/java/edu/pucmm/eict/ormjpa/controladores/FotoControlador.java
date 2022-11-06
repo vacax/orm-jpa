@@ -32,6 +32,10 @@ public class FotoControlador {
         app.routes(() -> {
             path("/fotos", () -> {
 
+                get("/", ctx -> {
+                    ctx.redirect("/fotos/listar");
+                });
+
                 get("/listar", ctx -> {
                     List<Foto> fotos = fotoServices.findAll();
 
