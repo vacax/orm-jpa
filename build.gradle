@@ -18,30 +18,33 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 
     //dependencia de Javalin
-    implementation 'io.javalin:javalin:4.6.0'
+    implementation 'io.javalin:javalin:5.3.2'
 
     //manejo de log.
-    implementation "org.slf4j:slf4j-simple:1.7.36"
+    implementation "org.slf4j:slf4j-simple:2.0.3"
+
+    // En la versión 5.3.X separaron las clases del renderizado en otro proyecto
+    implementation "io.javalin:javalin-rendering:5.3.2"
 
     //Procesamiento JSON para Javalin.
-    implementation "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4'
 
     //ORM - Hibernate.
     implementation 'org.hibernate.orm:hibernate-core:6.0.2.Final'
     //implementation 'org.hibernate:hibernate-entitymanager:6.0.0.Alpha7'
 
     //Driver de la conexión en h2...
-    implementation 'com.h2database:h2:2.1.212'
-    implementation 'org.postgresql:postgresql:42.3.6'
+    implementation 'com.h2database:h2:2.1.214'
+    implementation 'org.postgresql:postgresql:42.3.8'
 
     //sistemas de plantilla:
-    implementation 'org.thymeleaf:thymeleaf:3.0.15.RELEASE'
+    implementation 'org.thymeleaf:thymeleaf:3.1.1.RELEASE'
 }
 
 shadowJar{
-    baseName = 'app'
-    classifier = ''
-    archiveVersion = ''
+    archiveBaseName.set("app")
+    archiveClassifier.set('')
+    archiveVersion.set('')
 }
 
 /**
