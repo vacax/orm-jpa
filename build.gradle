@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group 'edu.pucmm.eict'
@@ -14,20 +14,22 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
 
     //dependencia de Javalin
-    implementation 'io.javalin:javalin:5.3.2'
+    implementation 'io.javalin:javalin:5.5.0'
 
     //manejo de log.
     implementation "org.slf4j:slf4j-simple:2.0.3"
 
     // En la versión 5.3.X separaron las clases del renderizado en otro proyecto
-    implementation "io.javalin:javalin-rendering:5.3.2"
+    implementation "io.javalin:javalin-rendering:5.5.0"
 
     //Procesamiento JSON para Javalin.
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4'
+    implementation("com.fasterxml.jackson.core:jackson-core:2.15.2")
+    implementation('com.fasterxml.jackson.core:jackson-databind:2.15.2')
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.15.2")
 
     //ORM - Hibernate.
     implementation 'org.hibernate.orm:hibernate-core:6.0.2.Final'
