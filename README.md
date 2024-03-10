@@ -8,6 +8,7 @@ preparado para ser utilizado con Heroku con Postgres.
 * Javalin 6.1.3
 * Hibernate 6
 * JPA 3.X
+* OpenApi para Javalin (https://github.com/javalin/javalin-openapi)
 
 ## Requiere:
 

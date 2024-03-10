@@ -111,7 +111,7 @@ public class Main {
                 });
             });
 
-            //Config
+            //Ver la documentación en https://github.com/javalin/javalin-openapi
             config.registerPlugin(new OpenApiPlugin(openApiConf -> {
                 openApiConf
                         .withRoles(Rules.ANONYMOUS)
