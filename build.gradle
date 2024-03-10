@@ -7,6 +7,14 @@ plugins {
 group 'edu.pucmm.eict'
 version '1.0-SNAPSHOT'
 
+ext{
+    openapi = "6.1.3"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+}
+
 mainClassName='edu.pucmm.eict.ormjpa.Main'
 
 repositories {
@@ -18,13 +26,13 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
     //dependencia de Javalin
-    implementation 'io.javalin:javalin:5.5.0'
+    implementation 'io.javalin:javalin:6.1.3'
 
     //manejo de log.
-    implementation "org.slf4j:slf4j-simple:2.0.3"
+    implementation "org.slf4j:slf4j-simple:2.0.11"
 
     // En la versión 5.3.X separaron las clases del renderizado en otro proyecto
-    implementation "io.javalin:javalin-rendering:5.5.0"
+    implementation "io.javalin:javalin-rendering:6.1.3"
 
     //Procesamiento JSON para Javalin.
     implementation("com.fasterxml.jackson.core:jackson-core:2.15.2")
@@ -41,6 +49,13 @@ dependencies {
 
     //sistemas de plantilla:
     implementation 'org.thymeleaf:thymeleaf:3.1.1.RELEASE'
+
+    //OpenApi
+    annotationProcessor("io.javalin.community.openapi:openapi-annotation-processor:$openapi")
+    implementation("io.javalin.community.openapi:javalin-openapi-plugin:$openapi") // for /openapi route with JSON scheme
+    implementation("io.javalin.community.openapi:javalin-swagger-plugin:$openapi") // for Swagger UI
+    implementation("io.javalin.community.openapi:javalin-redoc-plugin:$openapi") // for ReDoc UI
+
 }
 
 shadowJar{

@@ -5,11 +5,11 @@ preparado para ser utilizado con Heroku con Postgres.
 
 ## Utiliza:
 
-* Javalin 5.5.0
+* Javalin 6.1.3
 * Hibernate 6
 * JPA 3.X
 
 ## Requiere:
 
-* Java 17
-* Gradle 8.1.1
+* Java 21
+* Gradle 8.5
