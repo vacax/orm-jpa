@@ -53,15 +53,15 @@ public class EstudianteServices extends GestionDb<Estudiante> {
         Estudiante est = new Estudiante(2222, "Nombre");
         em.getTransaction().begin();
         em.persist(est); //creando el registro.
-        em.flush();
-        em.getTransaction().commit(); //persistiendo el registro.
-        em.getTransaction().begin();
+        //em.flush();
+        //em.getTransaction().commit(); //persistiendo el registro.
+        //em.getTransaction().begin();
         est.setNombre("Otro Nombre");
-        em.flush();
-        em.getTransaction().commit();
-        em.getTransaction().begin();
+        //em.flush();
+        //em.getTransaction().commit();
+        //em.getTransaction().begin();
         est.setNombre("Nuevamente otro nombre...");
-        em.flush();
+        //em.flush();
         em.getTransaction().commit();
         em.close(); //todos los objetos abiertos y manejados fueron cerrados.
         //
@@ -69,6 +69,7 @@ public class EstudianteServices extends GestionDb<Estudiante> {
         em = getEntityManager();
         em.getTransaction().begin();
         em.merge(est);
+        //em.refresh(est);
         em.getTransaction().commit();
         Profesor p = em.find(Profesor.class, 1);
         System.out.println("El nombre del profesor: "+p.getNombre());

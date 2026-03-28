@@ -20,6 +20,7 @@ public class Profesor implements Serializable {
     @OneToMany(mappedBy = "profesor", fetch = FetchType.EAGER) // La clase "Clase" es la dueña de la relación.
     private Set<GrupoClase> listaClases;
 
+    private String otroCampo;
 
     public Profesor(){
 
@@ -43,5 +44,13 @@ public class Profesor implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getOtroCampo() {
+        return otroCampo;
+    }
+
+    public void setOtroCampo(String otroCampo) {
+        this.otroCampo = otroCampo;
     }
 }

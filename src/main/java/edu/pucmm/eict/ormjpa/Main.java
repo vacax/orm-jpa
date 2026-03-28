@@ -122,7 +122,7 @@ public class Main {
                                                     .description("Api de demostración para OpenAPI")
                                                     .termsOfService("https://icc352.pucmm.edu.do/tos")
                                                     .contact("API Soporte", "https://icc352.pucmm.edu.do/soporte", "support@example.com")
-                                                    .license("Apache 2.0", "https://www.apache.org/licenses/", "Apache-2.0")
+                                                    //.license("Apache 2.0", "https://www.apache.org/licenses/", "Apache-2.0")
                                     )
                                     .withServer(openApiServer ->
                                             openApiServer
@@ -136,7 +136,7 @@ public class Main {
                                             openApiSecurity
                                                     .withBasicAuth() //Indicando la autorización basica.
                                                     .withBearerAuth() //Indicando la autorización vía Bearer.
-                                                    .withApiKeyAuth("ApiKeyAuth", "X-Api-Key")
+                                                    /*.withApiKeyAuth("ApiKeyAuth", "X-Api-Key")
                                                     .withCookieAuth("CookieAuth", "JSESSIONID")
                                                     .withOpenID("OpenID", "https://example.com/.well-known/openid-configuration")
                                                     .withOAuth2("OAuth2", "API usando OAuth 2", oauth2 ->
@@ -152,12 +152,12 @@ public class Main {
                                                             globalSecurity
                                                                     .withScope("write_pets")
                                                                     .withScope("read_pets")
-                                                    )
+                                                    )*/
                                     )
-                                    .withDefinitionProcessor(content -> { // you can add whatever you want to this document using your favourite json api
+                                    /*.withDefinitionProcessor(content -> { // you can add whatever you want to this document using your favourite json api
                                         content.set("test", new TextNode("Value"));
                                         return content.toPrettyString();
-                                    });
+                                    })*/;
                         });
             }));
 
