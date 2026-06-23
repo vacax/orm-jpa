@@ -32,6 +32,8 @@ dependencies {
     //manejo de log.
     implementation 'org.slf4j:slf4j-simple:2.0.18'
 
+    implementation 'org.jasypt:jasypt:1.9.3'
+
     // En la versión 7 cada motor de plantilla se distribuye en su propio módulo.
     implementation 'io.javalin:javalin-rendering:6.7.0'
 
