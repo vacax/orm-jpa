@@ -32,12 +32,6 @@ public class Main {
             BootStrapServices.getInstancia().init();
         }
 
-        //creando los objetos por defecto.
-        for(int i=0;i<50;i++){
-            EstudianteServices.getInstancia().crear(new Estudiante(i, "nombre "+i));
-            ProfesorServices.getInstancia().crear(new Profesor("Profesor "+i));
-        }
-
         //Creando la instancia del servidor.
         Javalin app = Javalin.create(config ->{
 
