@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>Producto</title>
+</head>
+<body>
+<div class="container" style="max-width: 600px; margin-top: 40px;">
+    <h1 class="h3 mb-4" th:text="${producto != null} ? 'Editar Producto' : 'Nuevo Producto'">Producto</h1>
+
+    <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+
+    <form th:action="${producto != null} ? @{'/productos/editar/' + ${producto.id}} : @{/productos}"
+          method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input class="form-control" id="nombre" type="text" name="nombre" required
+                   th:value="${producto != null} ? ${producto.nombre} : ${nombre}">
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required
+                      th:text="${producto != null} ? ${producto.descripcion} : ${descripcion}"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio</label>
+            <input class="form-control" id="precio" type="number" step="0.01" name="precio" required
+                   th:value="${producto != null} ? ${producto.precio} : ${precio}">
+        </div>
+        <div class="form-group">
+            <label for="imagenes">Imágenes</label>
+            <input class="form-control-file" id="imagenes" type="file" name="imagenes" accept="image/*" multiple
+                   th:required="${producto == null}">
+            <small class="form-text text-muted" th:if="${producto == null}">Obligatorio: al menos una imagen.</small>
+        </div>
+
+        <div th:if="${producto != null and !producto.imagenes.isEmpty()}" class="mb-3">
+            <label>Imágenes actuales</label><br>
+            <img th:each="img : ${producto.imagenes}"
+                 th:src="'data:' + ${img.mimeType} + ';base64,' + ${img.imagenBase64}"
+                 style="height: 60px; margin-right: 6px;">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a class="btn btn-secondary" href="/productos">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

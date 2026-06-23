@@ -2,6 +2,7 @@ package edu.pucmm.eict.ormjpa;
 
 import edu.pucmm.eict.ormjpa.controladores.EstudianteControlador;
 import edu.pucmm.eict.ormjpa.controladores.FotoControlador;
+import edu.pucmm.eict.ormjpa.controladores.ProductoControlador;
 import edu.pucmm.eict.ormjpa.controladores.ProfesorControlador;
 import edu.pucmm.eict.ormjpa.controladores.SeguridadControlador;
 import edu.pucmm.eict.ormjpa.entidades.Estudiante;
@@ -92,6 +93,16 @@ public class Main {
                     post("/procesarFoto", FotoControlador::procesarFotos);
                     get("/visualizar/{id}", FotoControlador::visualizarFotos);
                     get("/eliminar/{id}", FotoControlador::eliminarFotos);
+                });
+
+                path("/productos", () -> {
+                    get(ProductoControlador::listar);
+                    post(ProductoControlador::crear);
+                    get("/crear", ProductoControlador::mostrarFormularioCrear);
+                    get("/editar/{id}", ProductoControlador::mostrarFormularioEditar);
+                    post("/editar/{id}", ProductoControlador::editar);
+                    get("/eliminar/{id}", ProductoControlador::eliminar);
+                    get("/{id}", ProductoControlador::ver);
                 });
 
                 get("/login", SeguridadControlador::mostrarLogin);
