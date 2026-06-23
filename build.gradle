@@ -27,13 +27,13 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     //dependencia de Javalin
-    implementation 'io.javalin:javalin:7.2.2'
+    implementation 'io.javalin:javalin:6.7.0'
 
     //manejo de log.
     implementation 'org.slf4j:slf4j-simple:2.0.18'
 
     // En la versión 7 cada motor de plantilla se distribuye en su propio módulo.
-    implementation 'io.javalin:javalin-rendering-thymeleaf:7.2.2'
+    implementation 'io.javalin:javalin-rendering:6.7.0'
 
     //Procesamiento JSON para Javalin.
     implementation platform('com.fasterxml.jackson:jackson-bom:2.22.0')

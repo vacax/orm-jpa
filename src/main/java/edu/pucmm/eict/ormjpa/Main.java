@@ -65,7 +65,7 @@ public class Main {
              * En la versión 7, las rutas se definen dentro del bloque de configuración.
              * ver en https://javalin.io/migration-guide-javalin-6-to-7
              */
-            config.routes.apiBuilder(() -> {
+            config.router.apiBuilder(() -> {
                 path("/api",() -> {
 
                     path("/estudiante", () -> {
@@ -108,14 +108,16 @@ public class Main {
                 });
             });
 
-            //Manejo global de excepciones. En la versión 7 se registra en la configuración.
-            config.routes.exception(Exception.class, (exception, ctx) -> {
-                ctx.status(500);
-                ctx.html("<h1>Error no recuperado:"+exception.getMessage()+"</h1>");
-                exception.printStackTrace();
-            });
+        });
 
-        }).start(getHerokuAssignedPort());
+        //Manejo global de excepciones. En Javalin 6 se registra sobre la instancia de la app.
+        app.exception(Exception.class, (exception, ctx) -> {
+            ctx.status(500);
+            ctx.html("<h1>Error no recuperado:"+exception.getMessage()+"</h1>");
+            exception.printStackTrace();
+        });
+
+        app.start(getHerokuAssignedPort());
     }
 
     /**
