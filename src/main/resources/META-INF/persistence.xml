@@ -10,6 +10,10 @@
         <class>edu.pucmm.eict.ormjpa.entidades.Factura</class>
         <class>edu.pucmm.eict.ormjpa.entidades.ClienteFactura</class>
         <class>edu.pucmm.eict.ormjpa.entidades.Direccion</class>
+        <class>edu.pucmm.eict.ormjpa.entidades.Usuario</class>
+        <class>edu.pucmm.eict.ormjpa.entidades.Producto</class>
+        <class>edu.pucmm.eict.ormjpa.entidades.Imagen</class>
+        <class>edu.pucmm.eict.ormjpa.entidades.Comentario</class>
         <properties>
             <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />-->
             <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/ormjpa" />
@@ -35,6 +39,10 @@
         <class>edu.pucmm.eict.ormjpa.entidades.Cliente</class>
         <class>edu.pucmm.eict.ormjpa.entidades.Factura</class>
         <class>edu.pucmm.eict.ormjpa.entidades.ClienteFactura</class>
+        <class>edu.pucmm.eict.ormjpa.entidades.Usuario</class>
+        <class>edu.pucmm.eict.ormjpa.entidades.Producto</class>
+        <class>edu.pucmm.eict.ormjpa.entidades.Imagen</class>
+        <class>edu.pucmm.eict.ormjpa.entidades.Comentario</class>
         <properties>
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />

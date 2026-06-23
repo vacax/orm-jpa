@@ -1,7 +1,11 @@
 package edu.pucmm.eict.ormjpa.servicios;
 
+import edu.pucmm.eict.ormjpa.entidades.Comentario;
 import edu.pucmm.eict.ormjpa.entidades.Estudiante;
+import edu.pucmm.eict.ormjpa.entidades.Imagen;
+import edu.pucmm.eict.ormjpa.entidades.Producto;
 import edu.pucmm.eict.ormjpa.entidades.Profesor;
+import edu.pucmm.eict.ormjpa.entidades.Usuario;
 import org.h2.tools.Server;
 
 import java.sql.SQLException;
@@ -54,6 +58,20 @@ public class BootStrapServices {
             EstudianteServices.getInstancia().crear(new Estudiante(1, "Estudiante Demo"));
             ProfesorServices.getInstancia().crear(new Profesor("Profesor Demo"));
             System.out.println("Datos base creados.");
+        }
+
+        if(UsuarioServices.getInstancia().findAll().isEmpty()){
+            UsuarioServices.getInstancia().crear(new Usuario("admin", "admin", "ADMIN"));
+            UsuarioServices.getInstancia().crear(new Usuario("usuario", "usuario", "USUARIO"));
+        }
+
+        if(ProductoServices.getInstancia().findAll().isEmpty()){
+            Producto p = new Producto("Producto Demo", "Descripcion del producto demo", 100.0);
+            p.agregarImagen(new Imagen("image/png", "iVBORw0KGgo="));
+            Producto guardado = ProductoServices.getInstancia().crear(p);
+            Usuario admin = UsuarioServices.getInstancia().buscarPorUsername("admin");
+            ComentarioServices.getInstancia().crear(new Comentario("Primer comentario", admin, guardado));
+            System.out.println("Producto demo creado con imagen y comentario.");
         }
     }
 }
