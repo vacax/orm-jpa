@@ -1,5 +1,7 @@
 package edu.pucmm.eict.ormjpa.servicios;
 
+import edu.pucmm.eict.ormjpa.entidades.Estudiante;
+import edu.pucmm.eict.ormjpa.entidades.Profesor;
 import org.h2.tools.Server;
 
 import java.sql.SQLException;
@@ -30,8 +32,8 @@ public class BootStrapServices {
                     "-tcpAllowOthers",
                     "-tcpDaemon",
                     "-ifNotExists").start();
-            //Abriendo el cliente web. El valor 0 representa puerto aleatorio.
-            String status = Server.createWebServer("-trace", "-webPort", "0").start().getStatus();
+            //Abriendo la consola web en un puerto fijo conocido.
+            String status = Server.createWebServer("-webPort", "8082").start().getStatus();
             //
             System.out.println("Status Web: "+status);
         }catch (SQLException ex){
@@ -41,5 +43,17 @@ public class BootStrapServices {
 
     public void init(){
          startDb();
+         cargarDatosBase();
+    }
+
+    /**
+     * Crea la informacion base de manera automatica.
+     */
+    private void cargarDatosBase(){
+        if(EstudianteServices.getInstancia().findAll().isEmpty()){
+            EstudianteServices.getInstancia().crear(new Estudiante(1, "Estudiante Demo"));
+            ProfesorServices.getInstancia().crear(new Profesor("Profesor Demo"));
+            System.out.println("Datos base creados.");
+        }
     }
 }
