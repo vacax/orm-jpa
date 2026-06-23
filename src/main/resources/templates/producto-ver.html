@@ -20,6 +20,29 @@
                  th:src="'data:' + ${img.mimeType} + ';base64,' + ${img.imagenBase64}">
         </div>
     </div>
+
+    <hr/>
+    <h4>Comentarios</h4>
+    <ul class="list-group mb-3">
+        <li class="list-group-item" th:if="${producto.comentarios.isEmpty()}">Sin comentarios.</li>
+        <li class="list-group-item" th:each="comentario : ${producto.comentarios}">
+            <strong th:text="${comentario.usuario.username}">usuario</strong>
+            <small class="text-muted" th:text="${comentario.fecha}">fecha</small>
+            <p class="mb-0" th:text="${comentario.texto}">texto</p>
+        </li>
+    </ul>
+
+    <div th:if="${usuario != null}">
+        <form th:action="@{'/productos/' + ${producto.id} + '/comentario'}" method="post">
+            <div class="form-group">
+                <textarea class="form-control" name="texto" rows="2" placeholder="Escribe un comentario" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Comentar</button>
+        </form>
+    </div>
+    <div th:if="${usuario == null}">
+        <a href="/login">Inicia sesión para comentar</a>
+    </div>
 </div>
 </body>
 </html>

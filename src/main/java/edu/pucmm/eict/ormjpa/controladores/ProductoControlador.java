@@ -58,6 +58,7 @@ public class ProductoControlador {
         }
         Map<String, Object> modelo = new HashMap<>();
         modelo.put("producto", producto);
+        modelo.put("usuario", ctx.sessionAttribute("usuario"));
         ctx.render("/templates/producto-ver.html", modelo);
     }
 

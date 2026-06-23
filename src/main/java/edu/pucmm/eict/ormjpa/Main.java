@@ -1,5 +1,6 @@
 package edu.pucmm.eict.ormjpa;
 
+import edu.pucmm.eict.ormjpa.controladores.ComentarioControlador;
 import edu.pucmm.eict.ormjpa.controladores.EstudianteControlador;
 import edu.pucmm.eict.ormjpa.controladores.FotoControlador;
 import edu.pucmm.eict.ormjpa.controladores.ProductoControlador;
@@ -102,6 +103,7 @@ public class Main {
                     get("/editar/{id}", ProductoControlador::mostrarFormularioEditar);
                     post("/editar/{id}", ProductoControlador::editar);
                     get("/eliminar/{id}", ProductoControlador::eliminar);
+                    post("/{id}/comentario", ComentarioControlador::agregar);
                     get("/{id}", ProductoControlador::ver);
                 });
 
