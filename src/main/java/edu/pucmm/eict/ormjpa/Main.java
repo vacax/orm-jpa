@@ -3,6 +3,7 @@ package edu.pucmm.eict.ormjpa;
 import edu.pucmm.eict.ormjpa.controladores.EstudianteControlador;
 import edu.pucmm.eict.ormjpa.controladores.FotoControlador;
 import edu.pucmm.eict.ormjpa.controladores.ProfesorControlador;
+import edu.pucmm.eict.ormjpa.controladores.SeguridadControlador;
 import edu.pucmm.eict.ormjpa.entidades.Estudiante;
 import edu.pucmm.eict.ormjpa.entidades.Profesor;
 import edu.pucmm.eict.ormjpa.servicios.BootStrapServices;
@@ -93,6 +94,11 @@ public class Main {
                     get("/eliminar/{id}", FotoControlador::eliminarFotos);
                 });
 
+                get("/login", SeguridadControlador::mostrarLogin);
+                post("/login", SeguridadControlador::procesarLogin);
+                get("/logout", SeguridadControlador::logout);
+                get("/admin", SeguridadControlador::panelAdmin);
+
                 //Endpoint de inicio.
                 get("/", ctx -> ctx.result(mensaje));
 
@@ -103,6 +109,10 @@ public class Main {
             });
 
         });
+
+        app.before(SeguridadControlador::autoLogin);
+        app.before("/admin", SeguridadControlador::protegerAdmin);
+        app.before("/admin/*", SeguridadControlador::protegerAdmin);
 
         //Manejo global de excepciones. En Javalin 6 se registra sobre la instancia de la app.
         app.exception(Exception.class, (exception, ctx) -> {
